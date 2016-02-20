@@ -1,0 +1,26 @@
+{
+  "name": "steam-ts",
+  "version": "1.0.0",
+  "description": "Allow a steambot created by you to automatically maintain your TeamSpeak 3 server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node app.js -test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikitavondel/steam-ts.git"
+  },
+  "keywords": [
+    "steam",
+    "teamspeak",
+    "ts",
+    "steambot",
+    "nikitavondel"
+  ],
+  "author": "nikitavondel (Also known as Classy^^)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nikitavondel/steam-ts/issues"
+  },
+  "homepage": "https://github.com/nikitavondel/steam-ts#readme"
+}
