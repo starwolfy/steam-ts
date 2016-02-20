@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/nikitavondel/steam-ts/issues"
   },
-  "homepage": "https://github.com/nikitavondel/steam-ts#readme"
+  "homepage": "https://github.com/nikitavondel/steam-ts#readme",
+  "dependencies": {
+    "node-teamspeak": "1.0.10"
+  }
 }
