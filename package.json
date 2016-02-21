@@ -16,7 +16,7 @@
     "teamspeak",
     "ts",
     "steambot",
-    "nikitavondel"
+    "verification"
   ],
   "author": "nikitavondel (Also known as Classy^^)",
   "license": "MIT",
@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/nikitavondel/steam-ts#readme",
   "dependencies": {
-    "node-teamspeak": "1.0.10"
+    "node-teamspeak": "1.0.10",
+    "steam": "1.4.0",
+    "crypto": "0.0.3"
   }
 }
