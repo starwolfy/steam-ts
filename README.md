@@ -4,7 +4,7 @@
 
 1.0.3
 
-steam-ts is a [Node.js] module which allows for fast and easy verification between a [TeamSpeak] account and [Steam] account of the same client.
+steam-ts is a [Node.js] module which allows for fast and easy verification between a [TeamSpeak] account and a [Steam] account of the same user.
 
   - Extremely easy to configure
   - No experience in programming is required in order to set this bot up if you follow the documentation carefully
