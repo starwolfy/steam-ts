@@ -212,6 +212,14 @@ module.exports = function(ts_ip, q_username, q_password, bot_username, bot_passw
         if (userKeys[source] == message) {
             //great, keys match now store the link in a json file and promote them
             var verified_users = JSON.parse(fs.readFileSync('verified.json'));
+            for (var i=0;i<verified_users.users.length;i++) {
+                if(source in verified_users.users[i]) {
+                    steamFriends.sendMessage(source, '\nThis steam account already belongs to another TeamSpeak identity.', Steam.EChatEntryType.ChatMsg);
+                    delete userKeys[source];
+                    delete verifying[source];
+                    return;
+                }
+            }
             var split_clid = verifying[source].split("&");
 
             cl.send("clientinfo", {clid: split_clid[1]}, function (err, response) {
