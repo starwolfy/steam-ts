@@ -69,6 +69,7 @@ steamts("clwo.eu", "query_bot", "querypw12345", "steamclwobot", "steamclwopw123"
 
 ### Changelog
 
+-Currently empty.
 
 ### Development
 
