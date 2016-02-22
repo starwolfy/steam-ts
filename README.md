@@ -1,4 +1,4 @@
-# Link TeamSpeak with Steam
+# a Steambot for TeamSpeak
 [![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts)
 ### version
 
