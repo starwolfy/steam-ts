@@ -2,7 +2,7 @@
 [![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts)
 ### version
 
-1.0.4
+1.0.5
 
 steam-ts is a [Node.js] module which allows for fast and easy verification between a [TeamSpeak] account and a [Steam] account of the same user.
 

@@ -98,7 +98,7 @@ module.exports = function(ts_ip, q_username, q_password, bot_username, bot_passw
 
     //log into the teamspeak query server and use a virtual machine so we can dig deeper for information
     function loginTs() {
-        cl.send("login", {client_login_name: q_username, client_login_password: q_password}, function (err, response) {
+        cl.send("login", {client_login_name: q_username, client_login_password: q_password}, function (err) {
             if (typeof err !== "undefined") {
                 console.log(err);
             } else {
@@ -108,7 +108,7 @@ module.exports = function(ts_ip, q_username, q_password, bot_username, bot_passw
                         console.log(err);
                     } else {
                         console.log("Using virtual server 1 now.");
-                        cl.send("clientupdate", {client_nickname: "Steambot"}, function (err, response) {
+                        cl.send("clientupdate", {client_nickname: "Steambot"}, function (err) {
                             if (typeof err !== "undefined") {
                                 console.log(err);
                             } else {
@@ -121,6 +121,18 @@ module.exports = function(ts_ip, q_username, q_password, bot_username, bot_passw
         })
     }
     loginTs();
+
+    //prevents our query bot from being timed out by the query server
+    setInterval(decoyQuery,180000);
+    function decoyQuery() {
+        cl.send("version", function (err) {
+            if (typeof err !== "undefined") {
+                console.log(err);
+            } else {
+                console.log("Sent decoy query.");
+            }
+        })
+    }
 
     //this initiates the verifying process
     function verifyUser(message, source) {
@@ -179,7 +191,7 @@ module.exports = function(ts_ip, q_username, q_password, bot_username, bot_passw
         var key = crypto.randomBytes(20).toString('hex');
         //store the key in userKeys
         userKeys[source] = key;
-        cl.send("clientpoke", {clid: clid, msg: key}, function (err, response) {
+        cl.send("clientpoke", {clid: clid, msg: key}, function (err) {
             if (typeof err !== "undefined") {
                 console.log(err);
             } else {
@@ -210,7 +222,7 @@ module.exports = function(ts_ip, q_username, q_password, bot_username, bot_passw
                     console.log("Added " + source + " to verified.json");
 
                     var cldbid = response.client_database_id;
-                    cl.send("servergroupaddclient", {sgid: wantedrankid, cldbid: cldbid}, function (err, response) {
+                    cl.send("servergroupaddclient", {sgid: wantedrankid, cldbid: cldbid}, function (err) {
                         if (typeof err !== "undefined") {
                             console.log(err);
                         } else {
