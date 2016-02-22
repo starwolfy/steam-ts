@@ -122,6 +122,10 @@ module.exports = function(ts_ip, q_username, q_password, bot_username, bot_passw
     }
     loginTs();
 
+    cl.on("error", function(err){
+        console.log(err);
+    });
+
     //prevents our query bot from being timed out by the query server
     setInterval(decoyQuery,180000);
     function decoyQuery() {
