@@ -1,4 +1,4 @@
-module.exports = function(ts_ip, q_username, q_password, bot_username, bot_password, minlevel) {
+module.exports = function(ts_ip, q_username, q_password, bot_username, bot_password, minlevel, defaultrankid, wantedrankid) {
 
     var TeamSpeakClient = require("node-teamspeak"),
         fs = require('fs'),
@@ -128,7 +128,7 @@ module.exports = function(ts_ip, q_username, q_password, bot_username, bot_passw
                             delete verifying[source];
                         } else {
                             //group found use response to get it
-                            if (response.client_servergroups == 37) {
+                            if (response.client_servergroups == defaultrankid) {
                                 console.log("Sent user message on teamspeak, waiting for confirmation...");
                                 sendKeyTs(user_clid, source);
                             } else {
@@ -175,7 +175,7 @@ module.exports = function(ts_ip, q_username, q_password, bot_username, bot_passw
                     console.log("Added " + source + " to verified.json");
 
                     var cldbid = response.client_database_id;
-                    cl.send("servergroupaddclient", {sgid: 38, cldbid: cldbid}, function (err, response) {
+                    cl.send("servergroupaddclient", {sgid: wantedrankid, cldbid: cldbid}, function (err, response) {
                         if (typeof err !== "undefined") {
                             console.log(err);
                         } else {
