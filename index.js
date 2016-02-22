@@ -62,8 +62,10 @@ module.exports = function(ts_ip, q_username, q_password, bot_username, bot_passw
                 }
                 if (verifying[source] == "nickname") {
                     verifyUser(message, source);
-                } else if (prandomcode[0] == "randomcode") {
-                    checkKey(message, source);
+                } else if (typeof prandomcode !== "undefined") {
+                    if (prandomcode[0] == "randomcode") {
+                        checkKey(message, source);
+                    }
                 } else {
                     steamFriends.sendMessage(source, '\nCommand not recognized, please use !verify', Steam.EChatEntryType.ChatMsg);
                 }
