@@ -190,8 +190,8 @@ module.exports = function(ts_ip, q_username, q_password, bot_username, bot_passw
         } else {
             console.log(source + " entered an invalid verifykey.");
             steamFriends.sendMessage(source, '\nInvalid key, use !verify to restart the process.', Steam.EChatEntryType.ChatMsg);
-            delete userKeys[source];
-            delete verifying[source];
         }
+        delete userKeys[source];
+        delete verifying[source];
     }
 };
