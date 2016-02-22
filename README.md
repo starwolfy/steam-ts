@@ -2,7 +2,7 @@
 [![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts)
 ### version
 
-1.0.0
+1.0.1
 
 steam-ts is a [Node.js] module which allows for fast and easy verification between a [TeamSpeak] account and [Steam] account of the same client.
 
@@ -66,6 +66,9 @@ var steamts = require('steam-ts');
 steamts("clwo.eu", "query_bot", "querypw12345", "steamclwobot", "steamclwopw123", 3, 37, 38);
 //voila, your bot is now up and running!
 ```
+
+### Changelog
+
 
 ### Development
 
