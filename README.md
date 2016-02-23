@@ -13,7 +13,7 @@ steam-ts is a [Node.js] module which allows for fast and easy verification betwe
   - Allows you to set a minimum Steam level required in order to use automatic verification.
   - [MIT-license]
 
-### Explaination
+### Explanation
 
 As soon as your app is running with steam-ts your Steam bot will automatically log into Steam and into your TeamSpeak query server and start listening to **!verify** commands in the Steam chat.
 When someone writes **!verify** to the Steambot, it will prompt the user to give their TeamSpeak username which they are currently recognized by on the given TeamSpeak server and it will also warn them that they have to be connected to the TeamSpeak server during the process.
@@ -57,7 +57,7 @@ steamts(ts_ip, q_username, q_password, bot_username, bot_password, minlevel, def
   - bot_password - The password of your Steam bot account.
   - minlevel - The minimum required Steam level of the client who wants to utilize the verification system.
   - defaultrankid - The id of the rank which users start with. (unverified rank)
-  - wantedrankid - The id of the rank the bot will promote them too once they are verified. (verified rank)
+  - wantedrankid - The id of the rank the bot will promote them to once they are verified. (verified rank)
 
 Example of main file:
 ```javascript
