@@ -52,22 +52,6 @@ But first it is **required** to adjust the **config.json**.
 
 information about all the values inside the config.json:
 
-<<<<<<< HEAD
-=======
-First make sure that you've installed the module, after that we can write an extremely small piece of code which instantly sets everything up for you.
-All you need to do is execute a single function and everything will be up and running:
-steamts(ts_ip, q_username, q_password, bot_username, bot_password, minlevel, defaultrankid, wantedrankid)
-  - ts_ip - The IP adress of your TeamSpeak server
-  - q_username - The query username of your TeamSpeak Query server (As admin: tools>ServerQuery Login)
-  - q_password - The query password of your TeamSpeak Query server
-  - bot_username - The username of your Steam bot which you use to log in.
-  - bot_password - The password of your Steam bot account.
-  - minlevel - The minimum required Steam level of the client who wants to utilize the verification system.
-  - defaultrankid - The id of the rank which users start with. (unverified rank)
-  - wantedrankid - The id of the rank the bot will promote them to once they are verified. (verified rank)
-
-Example of main file:
->>>>>>> origin/master
 ```javascript
 {
   "main": {
@@ -108,9 +92,9 @@ An example of the config.json file:
   "main": {
     "ts_ip": "clwo.eu",
     "q_username": "nikitavondel",
-    "q_password": "123456",
+    "q_password": "12345",
     "bot_username": "mybot",
-    "bot_password": "654321",
+    "bot_password": "54321",
     "minlevel": 5,
     "defaultrankid": 33,
     "wantedrankid": 34
