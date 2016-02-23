@@ -2,18 +2,18 @@
 [![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts)
 ### version
 
-1.0.7
+1.1.0
 
 steam-ts is a [Node.js] module which allows for fast and easy verification between a [TeamSpeak] account and a [Steam] account of the same user.
 
   - Extremely easy to configure
   - No experience in programming is required in order to set this bot up if you follow the documentation carefully
   - Secure
-  - Stores the **links** in a .json file (MySQL support coming)
+  - Stores the **links** in a .json file
   - Allows you to set a minimum Steam level required in order to use automatic verification.
   - [MIT-license]
 
-### Explaination
+### Explanation
 
 As soon as your app is running with steam-ts your Steam bot will automatically log into Steam and into your TeamSpeak query server and start listening to **!verify** commands in the Steam chat.
 When someone writes **!verify** to the Steambot, it will prompt the user to give their TeamSpeak username which they are currently recognized by on the given TeamSpeak server and it will also warn them that they have to be connected to the TeamSpeak server during the process.
@@ -33,8 +33,92 @@ An example of the **verified.json** file:
     ]
 }
 ```
-
 The keys represent the steam64id which can easily be converted to let's say a steamid, whereas the values store the TeamSpeak identity of the user which is used to distuingish users from eachother.
+
+Another feature of this module is allowing **dynamic TeamSpeak channel names**. It allows you to select a certain supported game server and then assign it to a channel *(or channels)*, from then on it will update the name of the channel depending on the server name and the amount of players on the server. It is possible to disable this feature in the config file.
+
+### Usage
+
+First make sure that you've installed the module, after that we can write an extremely small piece of code which instantly sets everything up for you. All you need to do is execute a single function and everything will be up and running:
+
+```javascript
+var steamts = require('steam-ts');
+
+steamts.launch();
+//voila, your bot is now up and running!
+```
+
+But first it is **required** to adjust the **config.json**.
+
+information about all the values inside the config.json:
+
+```javascript
+{
+  "main": {
+    "ts_ip": "", // The IP adress of your TeamSpeak server
+    "q_username": "", // The query username of your TeamSpeak Query server (As admin: tools>ServerQuery Login)
+    "q_password": "", // The query password of your TeamSpeak Query server
+    "bot_username": "", // The username of your Steam bot which you use to log in.
+    "bot_password": "", // The password of your Steam bot account.
+    "minlevel": 0, // The minimum required Steam level of the client who wants to utilize the verification system.
+    "defaultrankid": 1, // The id of the rank which users start with. (unverified rank)
+    "wantedrankid": 2 // The id of the rank the bot will promote them to once they are verified. (verified rank)
+  },
+  "serverchannel": {
+    "enabled": false, // This is a beta feature, either enable or disable it.
+    "querytime": 0, // How many times (in ms) should it query the given game servers. (Do not set it lower than 10000)
+    "channels":[ // An array possibly containing multiple game servers it needs to query.
+      {
+        "channelid": [], // An array containing the TeamSpeak channelID's which need to be manipulated (Read notes for info)
+        "serverip": "", // The ip adress of the server you want to query (preferably no domain names here)
+        "servertype": "", // You can choose out of [this list] *(Counter-Strike: Global offensive would be 'csgo' etc.)*
+        "customport": 0 // Leave this at 0 if you haven't assigned a custom port to your server
+      }
+    ]
+  }
+}
+```
+
+**A few important notices:**
+  - The serverchannel feature is still in a beta stage, please do forward all bugs to [this repo].
+  - Channelids are obtainable by installing the [extended-default] TeamSpeak skin, otherwise make use of your TeamSpeak server query.
+  - The querytime really shouldn't be lower than 10000ms (10 seconds), unless you'd like to get blocked out by your own game server.
+  - Do **NOT** add the same game server twice in the channels array, instead use the channelid array to manipulate multiple TeamSpeak channels with the same information of the same server.
+
+An example of the config.json file:
+
+```javascript
+{
+  "main": {
+    "ts_ip": "clwo.eu",
+    "q_username": "nikitavondel",
+    "q_password": "12345",
+    "bot_username": "mybot",
+    "bot_password": "54321",
+    "minlevel": 5,
+    "defaultrankid": 33,
+    "wantedrankid": 34
+  },
+  "serverchannel": {
+    "enabled": true,
+    "querytime": 60000,
+    "channels":[
+      {
+        "channelid": [14,19],
+        "serverip": "37.59.11.113",
+        "servertype": "csgo",
+        "customport": 0
+      },
+      {
+        "channelid": [1,8],
+        "serverip": "37.59.11.114",
+        "servertype": "csgo",
+        "customport": 0
+      }
+    ]
+  }
+}
+```
 
 
 
@@ -44,32 +128,16 @@ The keys represent the steam64id which can easily be converted to let's say a st
 $ npm install steam-ts
 ```
 
-
-### Usage
-
-First make sure that you've installed the module, after that we can write an extremely small piece of code which instantly sets everything up for you.
-All you need to do is execute a single function and everything will be up and running:
-steamts(ts_ip, q_username, q_password, bot_username, bot_password, minlevel, defaultrankid, wantedrankid)
-  - ts_ip - The IP adress of your TeamSpeak server
-  - q_username - The query username of your TeamSpeak Query server (As admin: tools>ServerQuery Login)
-  - q_password - The query password of your TeamSpeak Query server
-  - bot_username - The username of your Steam bot which you use to log in.
-  - bot_password - The password of your Steam bot account.
-  - minlevel - The minimum required Steam level of the client who wants to utilize the verification system.
-  - defaultrankid - The id of the rank which users start with. (unverified rank)
-  - wantedrankid - The id of the rank the bot will promote them too once they are verified. (verified rank)
-
-Example of main file:
-```javascript
-var steamts = require('steam-ts');
-
-steamts("clwo.eu", "query_bot", "querypw12345", "steamclwobot", "steamclwopw123", 3, 37, 38);
-//voila, your bot is now up and running!
-```
-
 ### Changelog
-
-- Currently empty.
+- **UPDATE 1.1.0**:
+- Moved main module file into new lib directory
+- Moved verified.json inside data directory
+- Data directory will now be created when running the module for the first time
+- Launching the bot now requires the execution of the launch() function
+- Launch parameters are replaced with the config.json file
+- Added more dependencies
+- Added the dynamic server channel function
+- For detailed information on the newly added stuff see README.md
 
 ### Development
 
@@ -84,3 +152,6 @@ If you'd like to improve this project feel free to start a pull request, it will
 [TeamSpeak]: <https://teamspeak.com/>
 [Steam]: <https://steamcommunity.com/>
 [MIT-license]: <https://opensource.org/licenses/MIT>
+[extended-default]: <http://addons.teamspeak.com/directory/skins/stylesheets/Extended-Client-Info.html>
+[this list]: <https://github.com/sonicsnes/node-gamedig#supported>
+[this repo]: <https://github.com/nikitavondel/steam-ts>

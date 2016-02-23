@@ -1,0 +1,30 @@
+{
+  "main": {
+    "ts_ip": "",
+    "q_username": "",
+    "q_password": "",
+    "bot_username": "",
+    "bot_password": "",
+    "minlevel": 0,
+    "defaultrankid": 1,
+    "wantedrankid": 2
+  },
+  "serverchannel": {
+    "enabled": false,
+    "querytime": 0,
+    "channels":[
+      {
+        "channelid": [],
+        "serverip": "",
+        "servertype": "",
+        "customport": 0
+      },
+      {
+        "channelid": [],
+        "serverip": "",
+        "servertype": "",
+        "customport": 0
+      }
+    ]
+  }
+}
