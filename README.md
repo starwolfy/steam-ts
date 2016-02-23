@@ -108,9 +108,9 @@ An example of the config.json file:
   "main": {
     "ts_ip": "clwo.eu",
     "q_username": "nikitavondel",
-    "q_password": "12345",
+    "q_password": "123456",
     "bot_username": "mybot",
-    "bot_password": "54321",
+    "bot_password": "654321",
     "minlevel": 5,
     "defaultrankid": 33,
     "wantedrankid": 34
