@@ -4,7 +4,11 @@
 
 1.1.0
 
-steam-ts is a [Node.js] module which allows for fast and easy verification between a [TeamSpeak] account and a [Steam] account of the same user.
+```sh
+$ npm install steam-ts
+```
+
+[steam-ts] is a [Node.js] module which allows for fast and easy verification between a [TeamSpeak] account and a [Steam] account of the same user.
 
   - Extremely easy to configure
   - No experience in programming is required in order to set this bot up if you follow the documentation carefully
@@ -121,14 +125,6 @@ An example of the config.json file:
 }
 ```
 
-
-
-### Installation
-
-```sh
-$ npm install steam-ts
-```
-
 ### Changelog
 - **UPDATE 1.1.0**:
 - Moved main module file into new lib directory
@@ -149,6 +145,7 @@ Suggestions are extremely welcome!
 If you'd like to improve this project feel free to start a pull request, it will be reviewed as fast as possible.
 
 
+[steam-ts]: <https://www.npmjs.com/package/steam-ts>
 [Node.js]: <https://nodejs.org>
 [TeamSpeak]: <https://teamspeak.com/>
 [Steam]: <https://steamcommunity.com/>
