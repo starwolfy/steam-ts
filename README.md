@@ -71,7 +71,7 @@ information about all the values inside the config.json:
       {
         "channelid": [], // An array containing the TeamSpeak channelID's which need to be manipulated (Read notes for info)
         "serverip": "", // The ip adress of the server you want to query (preferably no domain names here)
-        "servertype": "", // You can choose out of [this list] *(Counter-Strike: Global offensive would be 'csgo' etc.)*
+        "servertype": "", // Check the notes for more information on this one.
         "customport": 0 // Leave this at 0 if you haven't assigned a custom port to your server
       }
     ]
@@ -84,6 +84,7 @@ information about all the values inside the config.json:
   - Channelids are obtainable by installing the [extended-default] TeamSpeak skin, otherwise make use of your TeamSpeak server query.
   - The querytime really shouldn't be lower than 10000ms (10 seconds), unless you'd like to get blocked out by your own game server.
   - Do **NOT** add the same game server twice in the channels array, instead use the channelid array to manipulate multiple TeamSpeak channels with the same information of the same server.
+  - All server types can be found at [gameDig's page].
 
 An example of the config.json file:
 
@@ -153,5 +154,5 @@ If you'd like to improve this project feel free to start a pull request, it will
 [Steam]: <https://steamcommunity.com/>
 [MIT-license]: <https://opensource.org/licenses/MIT>
 [extended-default]: <http://addons.teamspeak.com/directory/skins/stylesheets/Extended-Client-Info.html>
-[this list]: <https://github.com/sonicsnes/node-gamedig#supported>
+[gameDig's page]: <https://github.com/sonicsnes/node-gamedig#supported>
 [this repo]: <https://github.com/nikitavondel/steam-ts>
