@@ -2,7 +2,7 @@
 [![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts)
 ### version
 
-1.1.3
+1.1.5
 
 ```sh
 $ npm install steam-ts
@@ -21,7 +21,7 @@ $ npm install steam-ts
 
 As soon as your app is running with steam-ts your Steam bot will automatically log into Steam and into your TeamSpeak query server and start listening to **!verify** commands in the Steam chat.
 When someone writes **!verify** to the Steambot, it will prompt the user to give their TeamSpeak username which they are currently recognized by on the given TeamSpeak server and it will also warn them that they have to be connected to the TeamSpeak server during the process.
-When the given username was correct it will poke the TeamSpeak client under that username with a randomly generated string and it will tell the user to send that string to the Steambot through the Steam chat. When the bot has successfully compared the both strings it will write to a file called **verified.json**.
+When the given username was correct it will message the TeamSpeak client under that username with a randomly generated string and it will tell the user to send that string to the Steambot through the Steam chat. When the bot has successfully compared the both strings it will write to a file called **verified.json**.
 This json file contains an array called users wherein each object represents a verified user.
 
 An example of the **verified.json** file:
@@ -37,7 +37,7 @@ An example of the **verified.json** file:
     ]
 }
 ```
-The keys represent the steam64id which can easily be converted to let's say a steamid, whereas the values store the TeamSpeak identity of the user which is used to distuingish users from eachother.
+The keys represent the steam64id which can easily be converted to let's say a steamid, whereas the values store the TeamSpeak identity of the user.
 
 Another feature of this module is allowing **dynamic TeamSpeak channel names**. It allows you to select a certain supported game server and then assign it to a channel *(or channels)*, from then on it will update the name of the channel depending on the server name and the amount of players on the server. It is possible to disable this feature in the config file.
 
@@ -66,7 +66,8 @@ information about all the values inside the config.json:
     "bot_password": "", // The password of your Steam bot account.
     "minlevel": 0, // The minimum required Steam level of the client who wants to utilize the verification system.
     "defaultrankid": 1, // The id of the rank which users start with. (unverified rank)
-    "wantedrankid": 2 // The id of the rank the bot will promote them to once they are verified. (verified rank)
+    "wantedrankid": 2, // The id of the rank the bot will promote them to once they are verified. (verified rank)
+    "editdescription": false // Should the bot adjust users descriptions as well so that it will display their steamid64 there?
   },
   "serverchannel": {
     "enabled": false, // This is a beta feature, either enable or disable it.
@@ -87,7 +88,7 @@ information about all the values inside the config.json:
   - The serverchannel feature is still in a beta stage, please do forward all bugs to [this repo].
   - Channelids are obtainable by installing the [extended-default] TeamSpeak skin, otherwise make use of your TeamSpeak server query.
   - The querytime really shouldn't be lower than 10000ms (10 seconds), unless you'd like to get blocked out by your own game server.
-  - Do **NOT** add the same game server twice in the channels array, instead use the channelid array to manipulate multiple TeamSpeak channels with the same information of the same server.
+  - Do **NOT** add the same game server twice in the channels array, instead use the channelid array to manipulate multiple TeamSpeak channels with the same server.
   - All server types can be found at [gameDig's page].
 
 An example of the config.json file:
@@ -126,6 +127,15 @@ An example of the config.json file:
 ```
 
 ### Changelog
+- **UPDATE 1.1.5**:
+- On request; the bot is now sending messages instead of poking the users.
+- Added spam protection.
+- Keys now get added to an array, so if someone else generates a key for them their old one will still work.
+- Increased stability.
+- The message states who generated the token for you.
+- If your Steam account is already attached to a TeamSpeak identity, using !verify will give you that identity and quit the verification process.
+
+
 - **UPDATE 1.1.0**:
 - Moved main module file into new lib directory
 - Moved verified.json inside data directory
