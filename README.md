@@ -2,7 +2,7 @@
 [![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts)
 ### version
 
-1.1.5
+1.1.5a
 
 ```sh
 $ npm install steam-ts
@@ -59,7 +59,7 @@ information about all the values inside the config.json:
 ```javascript
 {
   "main": {
-    "ts_ip": "", // The IP adress of your TeamSpeak server
+    "ts_ip": "", // The IP adress of your TeamSpeak server, prefferably not a domain name.
     "q_username": "", // The query username of your TeamSpeak Query server (As admin: tools>ServerQuery Login)
     "q_password": "", // The query password of your TeamSpeak Query server
     "bot_username": "", // The username of your Steam bot which you use to log in.
@@ -96,7 +96,7 @@ An example of the config.json file:
 ```javascript
 {
   "main": {
-    "ts_ip": "clwo.eu",
+    "ts_ip": "37.59.11.113",
     "q_username": "nikitavondel",
     "q_password": "12345",
     "bot_username": "mybot",
@@ -116,7 +116,7 @@ An example of the config.json file:
         "customport": 0
       },
       {
-        "channelid": [1,8],
+        "channelid": [1],
         "serverip": "37.59.11.114",
         "servertype": "csgo",
         "customport": 0
