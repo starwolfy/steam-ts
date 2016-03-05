@@ -2,7 +2,7 @@
 [![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts)
 ### version
 
-1.1.6c
+1.1.6d
 
 ```sh
 $ npm install steam-ts
