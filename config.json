@@ -1,6 +1,7 @@
 {
   "main": {
     "ts_ip": "",
+    "q_port": 10011,
     "q_username": "",
     "q_password": "",
     "bot_username": "",

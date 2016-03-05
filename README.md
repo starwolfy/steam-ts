@@ -2,7 +2,7 @@
 [![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts)
 ### version
 
-1.1.5a
+1.1.6
 
 ```sh
 $ npm install steam-ts
@@ -59,7 +59,8 @@ information about all the values inside the config.json:
 ```javascript
 {
   "main": {
-    "ts_ip": "", // The IP adress of your TeamSpeak server, prefferably not a domain name.
+    "ts_ip": "", // The IP adress of your TeamSpeak server, prefferably not a domain name and cannot contain a port. (Custom ports are not indicated.)
+    "q_port_": 10011, // Do not change this unless you know what you're doing. This is your TeamSpeak Query port and not your 'normal' port.
     "q_username": "", // The query username of your TeamSpeak Query server (As admin: tools>ServerQuery Login)
     "q_password": "", // The query password of your TeamSpeak Query server
     "bot_username": "", // The username of your Steam bot which you use to log in.
@@ -97,6 +98,7 @@ An example of the config.json file:
 {
   "main": {
     "ts_ip": "37.59.11.113",
+    "q_port": 10011,
     "q_username": "nikitavondel",
     "q_password": "12345",
     "bot_username": "mybot",
@@ -127,6 +129,11 @@ An example of the config.json file:
 ```
 
 ### Changelog
+- **UPDATE 1.1.6**:
+- On request; q_port has now been added to the config.json to allow the bot to connect to custom TeamSpeak ports.
+- Cleared up a few console messages.
+
+
 - **UPDATE 1.1.5**:
 - On request; the bot is now sending messages instead of poking the users.
 - Added spam protection.
