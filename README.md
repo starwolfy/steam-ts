@@ -60,7 +60,7 @@ information about all the values inside the config.json:
 {
   "main": {
     "ts_ip": "", // The IP adress of your TeamSpeak server, prefferably not a domain name and cannot contain a port. (Custom ports are not indicated.)
-    "q_port_": 10011, // Do not change this unless you know what you're doing. This is your TeamSpeak Query port and not your 'normal' port.
+    "q_port": 10011, // Do not change this unless you know what you're doing. This is your TeamSpeak Query port and not your 'normal' port.
     "q_username": "", // The query username of your TeamSpeak Query server. (As admin: tools>ServerQuery Login)
     "q_password": "", // The query password of your TeamSpeak Query server.
     "q_vserverid": 1, // The id of your virtual server, default is 1.
