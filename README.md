@@ -2,7 +2,7 @@
 [![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts)
 ### version
 
-1.1.6e
+1.1.6f
 
 ```sh
 $ npm install steam-ts
@@ -72,7 +72,7 @@ information about all the values inside the config.json:
     "editdescription": false // Should the bot adjust users descriptions as well so that it will display their steamid64 there?
   },
   "serverchannel": {
-    "enabled": false, // Keep this feature DISABLED. It is not ready yet.
+    "enabled": false, // This is a beta feature, be careful when enabling this.
     "querytime": 0, // How many times (in ms) should it query the given game servers. (Do not set it lower than 10000)
     "channels":[ // An array possibly containing multiple game servers it needs to query.
       {
@@ -88,6 +88,7 @@ information about all the values inside the config.json:
 
 **A few important notices:**
   - The serverchannel feature is still in a beta stage, please do forward all bugs to [this repo].
+  - If your TeamSpeak server runs on a custom port that does not matter, no need to include it.
   - Channelids are obtainable by installing the [extended-default] TeamSpeak skin, otherwise make use of your TeamSpeak server query.
   - The querytime really shouldn't be lower than 10000ms (10 seconds), unless you'd like to get blocked out by your own game server.
   - Do **NOT** add the same game server twice in the channels array, instead use the channelid array to manipulate multiple TeamSpeak channels with the same server.
