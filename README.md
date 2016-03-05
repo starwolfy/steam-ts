@@ -2,7 +2,7 @@
 [![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts)
 ### version
 
-1.1.6d
+1.1.6e
 
 ```sh
 $ npm install steam-ts
@@ -72,7 +72,7 @@ information about all the values inside the config.json:
     "editdescription": false // Should the bot adjust users descriptions as well so that it will display their steamid64 there?
   },
   "serverchannel": {
-    "enabled": false, // This is a beta feature, either enable or disable it.
+    "enabled": false, // Keep this feature DISABLED. It is not ready yet.
     "querytime": 0, // How many times (in ms) should it query the given game servers. (Do not set it lower than 10000)
     "channels":[ // An array possibly containing multiple game servers it needs to query.
       {
