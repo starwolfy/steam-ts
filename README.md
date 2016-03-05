@@ -2,7 +2,7 @@
 [![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts)
 ### version
 
-1.1.6a
+1.1.6c
 
 ```sh
 $ npm install steam-ts
@@ -61,11 +61,12 @@ information about all the values inside the config.json:
   "main": {
     "ts_ip": "", // The IP adress of your TeamSpeak server, prefferably not a domain name and cannot contain a port. (Custom ports are not indicated.)
     "q_port_": 10011, // Do not change this unless you know what you're doing. This is your TeamSpeak Query port and not your 'normal' port.
-    "q_username": "", // The query username of your TeamSpeak Query server (As admin: tools>ServerQuery Login)
-    "q_password": "", // The query password of your TeamSpeak Query server
+    "q_username": "", // The query username of your TeamSpeak Query server. (As admin: tools>ServerQuery Login)
+    "q_password": "", // The query password of your TeamSpeak Query server.
+    "q_vserverid": 1, // The id of your virtual server, default is 1.
     "bot_username": "", // The username of your Steam bot which you use to log in.
     "bot_password": "", // The password of your Steam bot account.
-    "minlevel": 0, // The minimum required Steam level of the client who wants to utilize the verification system.
+    "minlevel": 1, // The minimum required Steam level of the client who wants to utilize the verification system. Shouldn't be 0.
     "defaultrankid": 1, // The id of the rank which users start with. (unverified rank)
     "wantedrankid": 2, // The id of the rank the bot will promote them to once they are verified. (verified rank)
     "editdescription": false // Should the bot adjust users descriptions as well so that it will display their steamid64 there?
@@ -103,9 +104,11 @@ An example of the config.json file:
     "q_password": "12345",
     "bot_username": "mybot",
     "bot_password": "54321",
+    "q_vserverid": 1,
     "minlevel": 5,
     "defaultrankid": 33,
-    "wantedrankid": 34
+    "wantedrankid": 34,
+    "editdescription": true
   },
   "serverchannel": {
     "enabled": true,
@@ -119,7 +122,7 @@ An example of the config.json file:
       },
       {
         "channelid": [1],
-        "serverip": "37.59.11.114",
+        "serverip": "27.69.11.114",
         "servertype": "csgo",
         "customport": 0
       }
@@ -129,6 +132,10 @@ An example of the config.json file:
 ```
 
 ### Changelog
+- **UPDATE 1.1.6c**:
+- On request; q_vserverid value has now been added to the config.json to specify on which virtual server the bot must operate.
+
+
 - **UPDATE 1.1.6**:
 - On request; q_port has now been added to the config.json to allow the bot to connect to custom TeamSpeak ports.
 - Cleared up a few console messages.

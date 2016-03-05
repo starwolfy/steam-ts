@@ -6,7 +6,8 @@
     "q_password": "",
     "bot_username": "",
     "bot_password": "",
-    "minlevel": 0,
+    "q_vserverid": 1,
+    "minlevel": 1,
     "defaultrankid": 1,
     "wantedrankid": 2,
     "editdescription": false
