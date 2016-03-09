@@ -2,7 +2,7 @@
 [![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts)
 ### version
 
-1.1.6g
+1.1.7
 
 ```sh
 $ npm install steam-ts
@@ -71,6 +71,10 @@ information about all the values inside the config.json:
     "wantedrankid": 2, // The id of the rank the bot will promote them to once they are verified. (verified rank)
     "editdescription": false // Should the bot adjust users descriptions as well so that it will display their steamid64 there?
   },
+    "twoFactor": {
+      "enabled": false, // Enable or disable mobile authentication, rather useless since steam goes down once a day so you will need to enter a new code at random times. See notes.
+      "code": "" // Enter the CURRENT code displayed on the Steam app.
+    },
   "serverchannel": {
     "enabled": false, // This is a beta feature, be careful when enabling this.
     "querytime": 0, // How many times (in ms) should it query the given game servers. (Do not set it lower than 10000)
@@ -93,6 +97,7 @@ information about all the values inside the config.json:
   - The querytime really shouldn't be lower than 10000ms (10 seconds), unless you'd like to get blocked out by your own game server.
   - Do **NOT** add the same game server twice in the channels array, instead use the channelid array to manipulate multiple TeamSpeak channels with the same server.
   - All server types can be found at [gameDig's page].
+  - Two factor authentication does not go automatically, you need to manually enter the current code displayed on your phone each time it connects to steam (after maintenance too).
 
 An example of the config.json file:
 
@@ -110,6 +115,10 @@ An example of the config.json file:
     "defaultrankid": 33,
     "wantedrankid": 34,
     "editdescription": true
+  },
+  "twoFactor": {
+    "enabled": true,
+    "code": "JAQ4S"
   },
   "serverchannel": {
     "enabled": true,
@@ -133,6 +142,10 @@ An example of the config.json file:
 ```
 
 ### Changelog
+- **UPDATE 1.1.7**:
+- Mobile authenticator is now supported.
+
+
 - **UPDATE 1.1.6c**:
 - On request; q_vserverid value has now been added to the config.json to specify on which virtual server the bot must operate.
 

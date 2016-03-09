@@ -12,6 +12,10 @@
     "wantedrankid": 2,
     "editdescription": false
   },
+  "twoFactor": {
+    "enabled": false,
+    "code": ""
+  },
   "serverchannel": {
     "enabled": false,
     "querytime": 0,
