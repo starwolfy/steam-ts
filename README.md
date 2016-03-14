@@ -2,7 +2,7 @@
 [![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts)
 ### version
 
-1.1.7
+1.2.0
 
 ```sh
 $ npm install steam-ts
@@ -15,6 +15,7 @@ $ npm install steam-ts
   - Secure
   - Stores the **links** in a .json file
   - Allows you to set a minimum Steam level required in order to use automatic verification.
+  - Perfect Steam Guard support.
   - [MIT-license]
 
 ### Explanation
@@ -38,8 +39,6 @@ An example of the **verified.json** file:
 }
 ```
 The keys represent the steam64id which can easily be converted to let's say a steamid, whereas the values store the TeamSpeak identity of the user.
-
-Another feature of this module is allowing **dynamic TeamSpeak channel names**. It allows you to select a certain supported game server and then assign it to a channel *(or channels)*, from then on it will update the name of the channel depending on the server name and the amount of players on the server. It is possible to disable this feature in the config file.
 
 ### Usage
 
@@ -69,35 +68,20 @@ information about all the values inside the config.json:
     "minlevel": 1, // The minimum required Steam level of the client who wants to utilize the verification system. Shouldn't be 0.
     "defaultrankid": 1, // The id of the rank which users start with. (unverified rank)
     "wantedrankid": 2, // The id of the rank the bot will promote them to once they are verified. (verified rank)
-    "editdescription": false // Should the bot adjust users descriptions as well so that it will display their steamid64 there?
+    "editdescription": false, // Should the bot adjust users descriptions as well so that it will display their steamid64 there?
+    "clanabbreviation": "" // Should not be bigger than 4 letters. The abbreviation of your clan name if you have one.
   },
-    "twoFactor": {
-      "enabled": false, // Enable or disable mobile authentication, rather useless since steam goes down once a day so you will need to enter a new code at random times. See notes.
-      "code": "" // Enter the CURRENT code displayed on the Steam app.
-    },
-  "serverchannel": {
-    "enabled": false, // This is a beta feature, be careful when enabling this.
-    "querytime": 0, // How many times (in ms) should it query the given game servers. (Do not set it lower than 10000)
-    "channels":[ // An array possibly containing multiple game servers it needs to query.
-      {
-        "channelid": [], // An array containing the TeamSpeak channelID's which need to be manipulated (Read notes for info)
-        "serverip": "", // The ip adress of the server you want to query (preferably no domain names here)
-        "servertype": "", // Check the notes for more information on this one.
-        "customport": 0 // Leave this at 0 if you haven't assigned a custom port to your server
-      }
-    ]
+  "twoFactor": {
+    "enabled": false // Enable or disable mobile authentication; **if you want to let this module support the two factor authentication you need to go through a small process described below!**
   }
 }
 ```
 
 **A few important notices:**
-  - The serverchannel feature is still in a beta stage, please do forward all bugs to [this repo].
   - If your TeamSpeak server runs on a custom port that does not matter, no need to include it.
-  - Channelids are obtainable by installing the [extended-default] TeamSpeak skin, otherwise make use of your TeamSpeak server query.
-  - The querytime really shouldn't be lower than 10000ms (10 seconds), unless you'd like to get blocked out by your own game server.
-  - Do **NOT** add the same game server twice in the channels array, instead use the channelid array to manipulate multiple TeamSpeak channels with the same server.
-  - All server types can be found at [gameDig's page].
   - Two factor authentication does not go automatically, you need to manually enter the current code displayed on your phone each time it connects to steam (after maintenance too).
+  - If you enable twoFactor you need to go through the process mentioned below, after having completed this process the module is able to automatically generate Steam Guard codes for you!
+  which allows for automation and stability.
 
 An example of the config.json file:
 
@@ -114,69 +98,43 @@ An example of the config.json file:
     "minlevel": 5,
     "defaultrankid": 33,
     "wantedrankid": 34,
-    "editdescription": true
+    "editdescription": true,
+    "clanabbreviation": "CLWO"
   },
   "twoFactor": {
-    "enabled": true,
-    "code": "JAQ4S"
-  },
-  "serverchannel": {
-    "enabled": true,
-    "querytime": 60000,
-    "channels":[
-      {
-        "channelid": [14,19],
-        "serverip": "37.59.11.113",
-        "servertype": "csgo",
-        "customport": 0
-      },
-      {
-        "channelid": [1],
-        "serverip": "27.69.11.114",
-        "servertype": "csgo",
-        "customport": 0
-      }
-    ]
+    "enabled": true
   }
 }
 ```
 
+### Two factor authentication
+
+If you would like to enable this feature you need to complete the following steps:
+- twoFactor.enabled should currently be false.
+- Log into the Steam account of your bot, enable verification through your mobile device so that Steam guard is enabled.
+- Then disable it, the reason why we previously enabled it is to link your phone number with your Steam account.
+- Now change twoFactor.enabled to true in the config.json.
+- Grab your phone and launch your Nodejs app, the module will enable Steam Guard for you again but first needs to know the verification code sent through SMS to your phone.
+- After having entered the code you have successfully enabled Steam guard, your app will now log into the Steam account automatically without needing you to keep on entering Steam guard codes!
+
+**IMPORTANT** : After the process of enabling Steam Guard has been completed it will create a file inside the data folder called twofactor.json, it is of **extreme importance** to keep that file in a secure place.
+**NEVER** share that file with anyone as it contains the shared secret between your phone and the Steam Guard codes, anyone with this file can generate Steam Guard codes for your Steam account.
+Also **make sure** that you backup that file as it contains important codes which you might need later on to recover your Steam account.
+Your mobile phone will no longer be able to generate Steam Guard codes for this account untill you have deactivated mobile authentication and enabled it yourself again. As long as the bot
+is in control of your Steam Guard codes you can find the current Steam guard codes used to login in /data/code.txt .
+
+If you used to have two factor authentication enabled with this module and recently decided to disable it but want it enabled again, make sure to remove the twofactor.json and code.txt file.
+
+
 ### Changelog
-- **UPDATE 1.1.7**:
-- Mobile authenticator is now supported.
-
-
-- **UPDATE 1.1.6c**:
-- On request; q_vserverid value has now been added to the config.json to specify on which virtual server the bot must operate.
-
-
-- **UPDATE 1.1.6**:
-- On request; q_port has now been added to the config.json to allow the bot to connect to custom TeamSpeak ports.
-- Cleared up a few console messages.
-
-
-- **UPDATE 1.1.5**:
-- On request; the bot is now sending messages instead of poking the users.
-- Added spam protection.
-- Keys now get added to an array, so if someone else generates a key for them their old one will still work.
-- Increased stability.
-- The message states who generated the token for you.
-- If your Steam account is already attached to a TeamSpeak identity, using !verify will give you that identity and quit the verification process.
-
-
-- **UPDATE 1.1.0**:
-- Moved main module file into new lib directory
-- Moved verified.json inside data directory
-- Data directory will now be created when running the module for the first time
-- Launching the bot now requires the execution of the launch() function
-- Launch parameters are replaced with the config.json file
-- Added more dependencies
-- Added the dynamic server channel function
-- For detailed information on the newly added stuff see README.md
+- **UPDATE 1.2.0**:
+- Added better Steam Guard support.
+- The app will no longer crash when steam goes down for maintenance.
+- Removed the serverchannel feature, will create a separate GitHub repo for that feature.
 
 ### Development
 
-Currently still under heavy development, please do report all the bugs you encounter.
+Please do report all the bugs you encounter.
 
 Suggestions are extremely welcome!
 

@@ -10,22 +10,10 @@
     "minlevel": 1,
     "defaultrankid": 1,
     "wantedrankid": 2,
-    "editdescription": false
+    "editdescription": false,
+    "clanabbreviation": ""
   },
-  "twoFactor": {
-    "enabled": false,
-    "code": ""
-  },
-  "serverchannel": {
-    "enabled": false,
-    "querytime": 0,
-    "channels":[
-      {
-        "channelid": [],
-        "serverip": "",
-        "servertype": "",
-        "customport": 0
-      }
-    ]
+  "twofactor": {
+    "enabled": false
   }
 }
