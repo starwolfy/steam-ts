@@ -2,7 +2,7 @@
 [![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts)
 
 ### version
-1.2.1c
+1.2.1d
 
 ```sh
 $ npm install steam-ts
@@ -23,7 +23,8 @@ $ npm install steam-ts
 As soon as your app is running with steam-ts your Steam bot will automatically log into Steam and into your TeamSpeak query server and start listening to **!verify** commands in the Steam chat.
 When someone writes **!verify** to the Steambot, it will prompt the user to give their TeamSpeak username which they are currently recognized by on the given TeamSpeak server and it will also warn them that they have to be connected to the TeamSpeak server during the process.
 When the given username was correct it will message the TeamSpeak client under that username with a randomly generated string and it will tell the user to send that string to the Steambot through the Steam chat. When the bot has successfully compared the both strings it will write to a file called **verified.json**.
-This json file contains an array called users wherein each object represents a verified user.
+This json file contains an array called users wherein each object represents a verified user. This module is good for preventing users from evading their bans by creating a new TeamSpeak identity, if they want to get rid of the guest rank they need to verify themselves and it generally isn't that eay to create a new Steam account
+and get it up to a high level (eg level 6) as it requires them to buy cards from the market. The market is locked for the first 30 days of new accounts.
 
 An example of the **verified.json** file:
 ```json
