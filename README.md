@@ -2,7 +2,7 @@
 [![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts)
 
 ### version
-1.2.2
+1.2.2b
 
 ```sh
 $ npm install steam-ts
@@ -41,10 +41,20 @@ An example of the **verified.json** file:
 ```
 The keys represent the steam64id which can easily be converted to let's say a steamid, whereas the values store the TeamSpeak identity of the user.
 
-### Usage
+### Installation
 
-First make sure that you've installed the module, after that we can write an extremely small piece of code which instantly sets everything up for you. All you need to do is execute a single function and everything will be up and running:
+First make sure that you actually have [Node.js] installed on your machine, there are plenty of tutorials which explain how to install Nodejs and how to utilize modules such as this one.
+Then do the following in the directory you have created for this bot:
+```sh
+$ npm init
+```
 
+Go through the small setup process, in this example we keep all the default settings. After you have setup a basic project by using that command enter the following:
+```sh
+$ npm install steam-ts
+```
+
+Then create a file called index.js (or whatever you set your main file to) in the root of the project directory you have created and change its content to this:
 ```javascript
 var steamts = require('steam-ts');
 
@@ -52,7 +62,12 @@ steamts.launch();
 //voila, your bot is now up and running!
 ```
 
-But first it is **required** to adjust the **config.json**.
+Then to launch the bot:
+```sh
+$ node index.js
+```
+
+But before you run it, it is **required** to adjust the **config.json**.
 
 information about all the values inside the config.json:
 
