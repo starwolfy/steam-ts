@@ -1,5 +1,5 @@
 # a Steambot for TeamSpeak
-[![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts)[![npm](https://img.shields.io/npm/dt/express.svg)](https://www.npmjs.com/package/steam-ts)
+[![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts)
 
 ### version
 1.2.2b
