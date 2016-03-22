@@ -1,11 +1,10 @@
 {
   "name": "steam-ts",
-  "version": "1.2.3",
+  "version": "1.2.3b",
   "description": "Allow a steambot created by you to automatically maintain your TeamSpeak 3 server.",
   "main": "lib/launch.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "./node_modules/.bin/mocha --reporter spec"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -33,7 +32,7 @@
     "steam-user" : "~3.3.4",
     "async": "~1.5.2",
     "readline": "~1.3.0",
-    "steamid": "~0.3.1"
+    "steamid": "~1.0.0"
   },
   "files": [
     "lib/",
