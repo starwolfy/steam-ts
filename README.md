@@ -82,7 +82,6 @@ information about all the values inside the config.json:
     "bot_username": "", // The username of your Steam bot which you use to log in.
     "bot_password": "", // The password of your Steam bot account.
     "minlevel": 1, // The minimum required Steam level of the client who wants to utilize the verification system. Shouldn't be 0.
-    "defaultrankid": 1, // The id of the rank which users start with. (unverified rank)
     "wantedrankid": 2, // The id of the rank the bot will promote them to once they are verified. (verified rank)
     "editdescription": false, // Should the bot adjust users descriptions as well so that it will display their steamid64 there?
     "clanabbreviation": "" // Should not be bigger than 4 letters. The abbreviation of your clan name if you have one.
@@ -112,7 +111,6 @@ An example of the config.json file:
     "bot_password": "54321",
     "q_vserverid": 1,
     "minlevel": 5,
-    "defaultrankid": 33,
     "wantedrankid": 34,
     "editdescription": true,
     "clanabbreviation": "CLWO"
@@ -143,10 +141,10 @@ If you used to have two factor authentication enabled with this module and recen
 
 
 ### Changelog
-- **UPDATE 1.2.0**:
-- Added better Steam Guard support.
-- The app will no longer crash when steam goes down for maintenance.
-- Removed the serverchannel feature, will create a separate GitHub repo for that feature.
+- **UPDATE 1.2.3**:
+- Removed the wantedrankid value from the config.json. Anyone can get verified now as long as they do not have the wantedrankid group.
+- The bot will now reconnect to the TeamSpeak server after it goes down.
+- Added multi-group support, people with multiple groups assigned to them can now use !verify as well.
 
 ### Development
 
