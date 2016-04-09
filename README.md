@@ -141,7 +141,7 @@ If you used to have two factor authentication enabled with this module and recen
 
 
 ### Changelog
-- **UPDATE 1.2.3**:
+- **UPDATE 1.2.4**:
 - Removed the wantedrankid value from the config.json. Anyone can get verified now as long as they do not have the wantedrankid group.
 - The bot will now reconnect to the TeamSpeak server after it goes down.
 - Added multi-group support, people with multiple groups assigned to them can now use !verify as well.
