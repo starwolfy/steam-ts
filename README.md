@@ -2,13 +2,13 @@
 [![Dependency Status](https://david-dm.org/nikitavondel/steam-ts.svg)](https://david-dm.org/nikitavondel/steam-ts) [![npm](https://img.shields.io/npm/dt/steam-ts.svg)](https://www.npmjs.com/package/steam-ts)
 
 ### version
-1.2.5
+1.2.4
 
 ```sh
 $ npm install steam-ts
 ```
 
-[steam-ts] is a [Node.js] application which allows for fast and easy verification between a [TeamSpeak] account and a [Steam] account of the same user.
+[steam-ts] is a [Node.js] module which allows for fast and easy verification between a [TeamSpeak] account and a [Steam] account of the same user.
 
   - Extremely easy to configure
   - No experience in programming is required in order to set this bot up if you follow the documentation carefully
@@ -141,9 +141,6 @@ If you used to have two factor authentication enabled with this module and recen
 
 
 ### Changelog
-- **UPDATE 1.2.5**:
-- Added support for TeamSpeak clients' names containing the same strings 
-
 - **UPDATE 1.2.4**:
 - Removed the wantedrankid value from the config.json. Anyone can get verified now as long as they do not have the wantedrankid group.
 - The bot will now reconnect to the TeamSpeak server after it goes down.
@@ -158,12 +155,6 @@ Suggestions are extremely welcome!
 If you'd like to improve this project feel free to start a pull request, it will be reviewed as fast as possible.
 
 
-### Support
-
-You can get support by either going to the [issues page] of [this repo] or you can get support via Steam by adding Classy^^.
-
-
-[issues page]: <https://github.com/nikitavondel/steam-ts/issues>
 [steam-ts]: <https://www.npmjs.com/package/steam-ts>
 [Node.js]: <https://nodejs.org>
 [TeamSpeak]: <https://teamspeak.com/>
@@ -172,4 +163,3 @@ You can get support by either going to the [issues page] of [this repo] or you c
 [extended-default]: <http://addons.teamspeak.com/directory/skins/stylesheets/Extended-Client-Info.html>
 [gameDig's page]: <https://github.com/sonicsnes/node-gamedig#supported>
 [this repo]: <https://github.com/nikitavondel/steam-ts>
-[Classy^^]: <http://steamcommunity.com/profiles/76561198034364892>
