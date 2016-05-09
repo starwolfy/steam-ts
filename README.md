@@ -20,11 +20,10 @@ $ npm install steam-ts
 
 ### Explanation
 
-As soon as your app is running with steam-ts your Steam bot will automatically log into Steam and into your TeamSpeak query server and start listening to **!verify** commands in the Steam chat.
-When someone writes **!verify** to the Steambot, it will prompt the user to give their TeamSpeak username which they are currently recognized by on the given TeamSpeak server and it will also warn them that they have to be connected to the TeamSpeak server during the process.
-When the given username was correct it will message the TeamSpeak client under that username with a randomly generated string and it will tell the user to send that string to the Steambot through the Steam chat. When the bot has successfully compared the both strings it will write to a file called **verified.json**.
-This json file contains an array called users wherein each object represents a verified user. This module is good for preventing users from evading their bans by creating a new TeamSpeak identity, if they want to get rid of the guest rank they need to verify themselves and it generally isn't that eay to create a new Steam account
-and get it up to a high level (eg level 6) as it requires them to buy cards from the market. The market is locked for the first 30 days of new accounts.
+As soon as this NodeJs app is launched your Steam bot will automatically log into Steam and log into your TeamSpeak query server and starts listening to **!verify** commands in the Steam chat.
+When someone writes **!verify** to the Steambot, it will prompt the user to give their TeamSpeak username which they are currently recognized by on the given TeamSpeak server.
+When the given username was correct it will message the TeamSpeak client under that username a randomly generated string and it will tell the user to send that string to the Steambot through the Steam chat. When the bot has successfully compared the both strings it will write to a file called **verified.json**.
+This json file contains an array called users wherein each element represents a verified user. This module is good for preventing users from evading their bans by creating a new TeamSpeak identity, if they want to get rid of the guest rank they need to verify themselves and it generally is not as easy to create a new Steam account and get it up to a high level again.
 
 An example of the **verified.json** file:
 ```json
@@ -39,7 +38,7 @@ An example of the **verified.json** file:
     ]
 }
 ```
-The keys represent the steam64id which can easily be converted to let's say a steamid, whereas the values store the TeamSpeak identity of the user.
+The keys represent the steamid64 which can easily be converted to let's say a steamid2, whereas the values store the TeamSpeak identity of the user.
 
 ### Installation
 
@@ -94,7 +93,6 @@ information about all the values inside the config.json:
 
 **A few important notices:**
   - If your TeamSpeak server runs on a custom port that does not matter, no need to include it.
-  - Two factor authentication does not go automatically, you need to manually enter the current code displayed on your phone each time it connects to steam (after maintenance too).
   - If you enable twoFactor you need to go through the process mentioned below, after having completed this process the module is able to automatically generate Steam Guard codes for you!
   which allows for automation and stability.
 
@@ -160,7 +158,7 @@ If you'd like to improve this project feel free to start a pull request, it will
 
 ### Support
 
-You can get support by either going to the [issues page] of [this repo] or you can get support via Steam by adding Classy^^.
+You can get support by either going to the [issues page] of [this repo] or you can get support via Steam by adding [Classy^^].
 
 
 [issues page]: <https://github.com/nikitavondel/steam-ts/issues>
