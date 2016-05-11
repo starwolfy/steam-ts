@@ -81,7 +81,7 @@ information about all the values inside the config.json:
     "bot_username": "", // The username of your Steam bot which you use to log in.
     "bot_password": "", // The password of your Steam bot account.
     "minlevel": 1, // The minimum required Steam level of the client who wants to utilize the verification system. Shouldn't be 0.
-    "wantedrankid": 2, // The id of the rank the bot will promote them to once they are verified. (verified rank)
+    "wantedrankid": 2, // The id of the rank the bot will promote them to once they are verified, cannot be value 1. (verified rank)
     "editdescription": false, // Should the bot adjust users descriptions as well so that it will display their steamid64 there?
     "clanabbreviation": "" // Should not be bigger than 4 letters. The abbreviation of your clan name if you have one.
   },
@@ -92,9 +92,9 @@ information about all the values inside the config.json:
 ```
 
 **A few important notices:**
-  - If your TeamSpeak server runs on a custom port that does not matter, no need to include it.
-  - If you enable twoFactor you need to go through the process mentioned below, after having completed this process the module is able to automatically generate Steam Guard codes for you!
-  which allows for automation and stability.
+  - If your TeamSpeak server runs on a custom port it does not matter, do not include it at the ts_ip value.
+  - If you enable twoFactor you need to go through the process mentioned below, after having completed this process the module is able to automatically generate Steam Guard codes for you which allows for automation and stability.
+  - The value wantedrankid cannot be set to 1! Doing so will result in the bot trying to access someone with the very default rank on your TeamSpeak server which it has no access to. So create a new group and make that the default rank, as long as it does not have 1 as id.
 
 An example of the config.json file:
 
