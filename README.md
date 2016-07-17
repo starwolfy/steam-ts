@@ -143,7 +143,7 @@ If you used to have two factor authentication enabled with this module and recen
 
 
 ### Admin panel:
-![admin panel](http://i.imgur.com/8PYsfjh.png)
+![admin panel](http://i.imgur.com/aCD2ea5.png)
 
 
 ### Changelog
