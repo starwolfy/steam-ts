@@ -142,6 +142,10 @@ is in control of your Steam Guard codes you can find the current Steam guard cod
 If you used to have two factor authentication enabled with this module and recently decided to disable it but want it enabled again, make sure to remove the twofactor.json and code.txt file.
 
 
+### Admin panel:
+![admin panel](http://i.imgur.com/8PYsfjh.png)
+
+
 ### Changelog
 - **UPDATE 1.3.0**:
 - Added an admin panel
