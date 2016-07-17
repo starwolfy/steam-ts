@@ -14,5 +14,15 @@
   },
   "twofactor": {
     "enabled": false
+  },
+  "webserver": {
+    "enabled": false,
+    "port": "8080",
+    "webminUsername": "",
+    "webminPassword": "",
+    "timeOut": 300000
+  },
+  "doNotEdit": {
+    "sessionSecret": ""
   }
 }

@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Steam-TS Panel</title>
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="stylesheets/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for login -->
+    <link href="stylesheets/signin.css" rel="stylesheet">
+
+    <!-- For footer -->
+    <link href="stylesheets/sticky-footer.css" rel="stylesheet">
+
+    <!-- For toastr -->
+    <link href="stylesheets/toastr.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="javascripts/html5shiv.min.js"></script>
+      <script src="javascripts/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Login</h2>
+        <label for="inputUsername" class="sr-only">Username</label>
+        <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div id="inputFeedback"></div>
+        <button type="button" class="btn btn-lg btn-primary btn-block" onclick="loginClicked()">Login</button>
+      </form>
+
+    </div> <!-- /container -->
+
+    <footer class="footer" id="loginFooter">
+      <div class="container">
+        <p class="text-muted" id="footerTextLogin">Created with <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> on <a href="https://github.com/nikitavondel/steam-ts">GitHub</a> by <a href="http://steamcommunity.com/profiles/76561198034364892">Classy^^</a></p>
+      </div>
+    </footer>
+
+    <!-- jQeury stuff -->
+    <script src="javascripts/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="javascripts/jquery.min.js"><\/script>')</script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="javascripts/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- Import socket.io code -->
+    <script src="javascripts/socket.io-1.4.5.js"></script>
+
+    <!-- For toastr -->
+    <script src="javascripts/toastr.min.js"></script>
+
+    <!-- Custom code -->
+    <script src="javascripts/login.js"></script>
+  </body>
+</html>
