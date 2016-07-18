@@ -2,7 +2,7 @@
 
 
 ### version
-1.3.0
+1.3.0a
 
 steam-ts is a [Node.js] application which allows for fast and easy verification between a [TeamSpeak] account and a [Steam] account of the same user.
 
@@ -147,6 +147,9 @@ If you used to have two factor authentication enabled with this module and recen
 
 
 ### Changelog
+- **UPDATE 1.3.0a**:
+- Fixed admin panel bug where it would say that you have entered an incorrect SteamID.
+
 - **UPDATE 1.3.0**:
 - Added an admin panel
 - Adjusted philosophy behind this project, it is now a Node.Js application and not a module anymore.
