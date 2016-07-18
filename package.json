@@ -1,6 +1,6 @@
 {
   "name": "steam-ts",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Allow for proper Steam integration for TeamSpeak.",
   "main": "lib/launch.js",
   "scripts": {
@@ -30,7 +30,7 @@
     "path": "~0.12.7",
     "steam-totp": "~1.3.0",
     "steam-user" : "~3.11.0",
-    "async": "~1.5.2",
+    "async": "2.0.0",
     "readline": "~1.3.0",
     "steamid": "~1.1.0",
     "body-parser": "~1.15.1",

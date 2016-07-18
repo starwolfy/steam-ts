@@ -8,6 +8,7 @@ steam-ts is a [Node.js] application which allows for fast and easy verification 
 
   - Easy to configure
   - Stores the **links** in a .json file
+  - Logs nicknames and IP addresses
   - Allows you to set a minimum Steam level required in order to use automatic verification.
   - Perfect Steam Guard support.
   - One TeamSpeak3 identity per Steam account.
@@ -24,17 +25,12 @@ This json file contains an array called users wherein each element represents an
 An example of the **verified.json** file:
 ```json
 {
-    "users": [
-        {
-            "[U:1:74099164]": "I7ubU2YcawFqYbzftZD3RIm8Fu4="
-        },
-        {
-            "[U:1:74099154]": "QuFmp68SUNzEvdNbU+6uYOHhcUQ="
-        }
-    ]
+            "nicknames": ["Bob, "Bob <3""],
+            "addresses": ["192.168.2.15", "192.168.2.35"],
+            "steamid": "[U:1:120910450]",
+            "teamspeakid": "/huKa7R0PJFlehpmcCXnyW/ZuZw="
 }
 ```
-The keys represent the Steam Identity Version 3 which can easily be converted to other Steam identity formats, whereas the values store the TeamSpeak 3 identity of the user.
 
 ### Installation
 
@@ -66,7 +62,8 @@ information about all the values inside the config.json:
     "minlevel": 1, // The minimum required Steam level of the client who wants to utilize the verification system. Shouldn't be 0.
     "wantedrankid": 2, // The id of the rank the bot will promote them to once they are verified, cannot be value 1. (verified rank)
     "editdescription": false, // Should the bot adjust users descriptions as well so that it will display their steamid64 there?
-    "clanabbreviation": "" // Should not be bigger than 4 letters. The abbreviation of your clan name if you have one.
+    "clanabbreviation": "", // Should not be bigger than 4 letters. The abbreviation of your clan name if you have one.
+    "queryinterval": 30000 //  At which interval should the bot query the server for client information. In ms.
   },
   "twoFactor": {
     "enabled": false // Enable or disable mobile authentication; **if you want to let this module support the two factor authentication you need to go through a small process described below!**
@@ -76,7 +73,7 @@ information about all the values inside the config.json:
     "port": "8080", // The port on which the admin panel listens to. Is a string.
     "webminUsername": "", // Login credentials required to log into the admin panel.
     "webminPassword": "", // Login credentials required to log into the admin panel. Please do use a password which you do not use for anything else as the admin panel traffic does not get encrypted.
-    "timeOut": 300000  //  After three failed attempts of logging in, this decides how long a user on that ip address would have to wait before they'd be able to make new login requests again.
+    "timeOut": 300000  //  After three failed attempts of logging in, this decides how long a user on that ip address would have to wait in ms before they'd be able to make new login requests again.
   },
   "doNotEdit": {
     "sessionSecret": ""
@@ -89,6 +86,7 @@ information about all the values inside the config.json:
   - If you enable twoFactor you need to go through the process mentioned below, after having completed this process this application is able to automatically generate Steam Guard codes for you which allows for automation and stability.
   - The value wantedrankid cannot be set to 1! Doing so will result in the bot trying to access someone with the very default rank on your TeamSpeak server which it has no access to. So create a new group and make that the default rank, as long as it does not have 1 as id.
   - Do not edit the children of property "doNotEdit".
+  - Do not share value "sessionSecret".
 
 An example of the config.json file:
 
@@ -105,7 +103,8 @@ An example of the config.json file:
     "minlevel": 5,
     "wantedrankid": 34,
     "editdescription": true,
-    "clanabbreviation": "CLWO"
+    "clanabbreviation": "CLWO",
+    "queryinterval": 30000
   },
   "twoFactor": {
     "enabled": true
@@ -143,19 +142,23 @@ If you used to have two factor authentication enabled with this module and recen
 
 
 ### Admin panel:
-![admin panel](http://i.imgur.com/aCD2ea5.png)
+![admin panel](http://i.imgur.com/Y6hDcK1.png)
 
+### Admin panel detailed section:
+![admin panel details](http://i.imgur.com/DC0PN54.png)
 
 ### Changelog
-- **UPDATE 1.3.0**:
+- **UPDATE 1.3.1**:
 - Added an admin panel
 - Adjusted philosophy behind this project, it is now a Node.Js application and not a module anymore.
 - verified.json now gets checked regurarly and does not get stored in the RAM of the system anymore.
-- Adjusted code for possible future database compatability.
+- Adjusted code for possible future database functionality.
+- Now logging IP addresses and nicknames.
+- verified.json now has a different structure. The application will automatically update it for you without making you lose data.
 
 ### Development
 
-Please do report all the bugs you encounter.
+Please do report **all** the bugs you encounter.
 
 Suggestions are welcome!
 
@@ -164,7 +167,7 @@ If you'd like to improve this project feel free to start a pull request, it will
 
 ### Support
 
-You can get support by either going to the [issues page] of [this repo] or you can get support via Steam by adding [Classy^^].
+You can get support by either going to the [issues page] of [this repo] or you can get personal support via Steam by adding [Classy^^].
 
 
 [issues page]: <https://github.com/nikitavondel/steam-ts/issues>

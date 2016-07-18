@@ -10,12 +10,15 @@ module.exports = function(io) {
         var address = socket.handshake.address;
         var referer = socket.request.headers.referer;
 
+        var configjson = JSON.parse(fs.readFileSync(path.join(__dirname, '../', '../', "config.json")));
+        var waitInterval = configjson.webserver.timeOut;
+
+        var webminUsername = configjson.webserver.webminUsername;
+        var webminPassword = configjson.webserver.webminPassword;
+
         if (referer.indexOf('/login') >= 0) {
 
             if (attemptedLogins[address] > 3) {
-
-                    var configjson = JSON.parse(fs.readFileSync(path.join(__dirname, '../', '../', "config.json")));
-                    var waitInterval = configjson.webserver.timeOut;
 
                     socket.emit('timeout', waitInterval);
 
@@ -32,9 +35,6 @@ module.exports = function(io) {
             } else {
 
                 if (attemptedLogins[address] == 4) {
-
-                    var configjson = JSON.parse(fs.readFileSync(path.join(__dirname, '../', '../', "config.json")));
-                    var waitInterval = configjson.webserver.timeOut;
 
                     setTimeout(function() {
 
@@ -53,10 +53,8 @@ module.exports = function(io) {
                 }
 
             }
-
-            var configjson = JSON.parse(fs.readFileSync(path.join(__dirname, '../', '../', "config.json")));
             
-            if (msg.username == configjson.webserver.webminUsername && msg.password == configjson.webserver.webminPassword) {
+            if (msg.username == webminUsername && msg.password == webminPassword) {
 
                 socket.handshake.session.loggedIn = true;
                 respond({type: 1});
@@ -83,53 +81,22 @@ module.exports = function(io) {
                     return;
                 }
 
-                if (!sid.isValid || sid.isGroupChat || sid.isLobby) {
+                if (!sid.isValid() || sid.isGroupChat() || sid.isLobby()) {
                     respond(0);
                     return;
                 }
 
                 var verifiedjson = JSON.parse(fs.readFileSync(path.join(__dirname, '../', '../', "data", "verified.json")));
-                var done = false;
 
                 for (var i=0;i<verifiedjson.users.length;i++) {
 
-                    for (var key in verifiedjson.users[i]) {
+                    if (verifiedjson.users[i].steamid == msg.old_steamid && verifiedjson.users[i].teamspeakid == msg.old_teamspeakid) {
 
-                        if (verifiedjson.users[i].hasOwnProperty(key)) {
+                        verifiedjson.users[i].teamspeakid = msg.new_teamspeakid;
+                        verifiedjson.users[i].steamid = msg.new_steamid;
 
-                            if (key == msg.old_steamid) {
-
-                                if (verifiedjson.users[i][key] != msg.old_teamspeakid) {
-                                    return;
-                                }
-
-                                verifiedjson.users[i][key] = msg.new_teamspeakid;
-
-                                function rename(obj, oldName, newName) {
-                                    if (typeof obj === 'string') {
-                                        newName = oldName;
-                                        oldName = obj;
-                                        obj = this;
-                                    }
-                                    if (obj.hasOwnProperty(oldName)) {
-                                        obj[newName] = obj[oldName];
-                                        delete obj[oldName];
-                                    }
-                                    return obj;
-                                }
-
-                                rename(verifiedjson.users[i], key, msg.new_steamid);
-
-                                done = true;
-                                break;
-
-                            }
-
-                        }
-                    }
-
-                    if (done) {
                         break;
+
                     }
 
                 }
@@ -144,28 +111,19 @@ module.exports = function(io) {
                 console.log("Delete link request received!");
 
                 var verifiedjson = JSON.parse(fs.readFileSync(path.join(__dirname, '../', '../', "data", "verified.json")));
-                var found = false;
 
 
                 for (var i=0;i<verifiedjson.users.length;i++) {
 
-                    for (var key in verifiedjson.users[i]) {
 
-                        if (verifiedjson.users[i].hasOwnProperty(key)) {
+                    if (verifiedjson.users[i].steamid == msg.steamid && verifiedjson.users[i].teamspeakid == msg.teamspeakid) {
 
-                            if (key == msg.steamid && verifiedjson.users[i][key] == msg.teamspeakid) {
+                        verifiedjson.users.splice([i], 1);
 
-                                verifiedjson.users.splice([i], 1);
+                        fs.writeFileSync(path.join(__dirname, '../', '../', "data", "verified.json"), JSON.stringify(verifiedjson, null, 4));
+                        respond();
+                        break;
 
-
-                                fs.writeFileSync(path.join(__dirname, '../', '../', "data", "verified.json"), JSON.stringify(verifiedjson, null, 4));
-                                respond();
-                                found = true;
-                                break;
-
-                            }
-
-                        }
                     }
 
                     if (found) {
@@ -176,7 +134,23 @@ module.exports = function(io) {
 
             });
 
-    
+            socket.on("requestTeamspeak", function (msg, respond) {
+
+                var verified = JSON.parse(fs.readFileSync(path.join(__dirname, '../', '../', "data", "verified.json")));
+
+                for(var i=0;i<verified.users.length;i++) {
+
+                    if (verified.users[i].teamspeakid == msg) {
+
+                        respond({nicknames: verified.users[i].nicknames, addresses: verified.users[i].addresses});
+
+                        break;
+
+                    }
+
+                }
+
+            });
 
         }
 

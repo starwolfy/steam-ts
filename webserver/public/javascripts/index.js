@@ -84,3 +84,33 @@ function columnDeleteSubmit() {
     });
 
 }
+
+function showTeamspeak(obj) {
+
+    var teamspeakid = $(obj).parent().data('tdteamspeak');
+
+    socket.emit("requestTeamspeak", teamspeakid, function(msg) {
+
+        var nicknames = msg.nicknames;
+        var addresses = msg.addresses;
+
+        var nicknamesHTML = "";
+
+        for (var i=0; i<nicknames.length;i++) {
+            nicknamesHTML += "<li class='list-group-item'>" + nicknames[i] + "</li>";
+        }
+
+        document.getElementById("showNicknames").innerHTML = nicknamesHTML;
+
+        var addressesHTML = "";
+
+        for (var i=0; i<addresses.length;i++) {
+            addressesHTML += "<li class='list-group-item'>" + addresses[i] + "</li>";
+        }
+
+        document.getElementById("showAddresses").innerHTML = addressesHTML;
+        
+
+    });
+
+}

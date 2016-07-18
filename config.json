@@ -10,7 +10,8 @@
     "minlevel": 1,
     "wantedrankid": 2,
     "editdescription": false,
-    "clanabbreviation": ""
+    "clanabbreviation": "",
+    "queryinterval": 30000
   },
   "twofactor": {
     "enabled": false
