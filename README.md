@@ -25,10 +25,10 @@ This json file contains an array called users wherein each element represents an
 An example of the **verified.json** file:
 ```json
 {
-            "nicknames": ["Bob, "Bob <3"],
-            "addresses": ["192.168.2.15", "192.168.2.35"],
-            "steamid": "[U:1:120910450]",
-            "teamspeakid": "/huKa7R0PJFlehpmcCXnyW/ZuZw="
+  "nicknames": ["Bob", "Bob <3"],
+  "addresses": ["192.168.2.15", "192.168.2.35"],
+  "steamid": "[U:1:120910450]",
+  "teamspeakid": "/huKa7R0PJFlehpmcCXnyW/ZuZw="
 }
 ```
 
