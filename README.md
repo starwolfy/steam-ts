@@ -148,6 +148,9 @@ If you used to have two factor authentication enabled with this module and recen
 ![admin panel details](http://i.imgur.com/DC0PN54.png)
 
 ### Changelog
+- **UPDATE 1.3.1a**:
+- Fixed checkToken() error.
+
 - **UPDATE 1.3.1**:
 - Added an admin panel
 - Adjusted philosophy behind this project, it is now a Node.Js application and not a module anymore.
