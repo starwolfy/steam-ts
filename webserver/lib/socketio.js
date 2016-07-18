@@ -83,7 +83,7 @@ module.exports = function(io) {
                     return;
                 }
 
-                if (!sid.isValid || sid.isGroupChat || sid.isLobby) {
+                if (!sid.isValid() || sid.isGroupChat() || sid.isLobby()) {
                     respond(0);
                     return;
                 }
