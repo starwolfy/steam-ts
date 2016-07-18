@@ -4,7 +4,7 @@
 ### version
 1.3.0
 
-[steam-ts] is a [Node.js] application which allows for fast and easy verification between a [TeamSpeak] account and a [Steam] account of the same user.
+steam-ts is a [Node.js] application which allows for fast and easy verification between a [TeamSpeak] account and a [Steam] account of the same user.
 
   - Easy to configure
   - Stores the **links** in a .json file
@@ -168,7 +168,6 @@ You can get support by either going to the [issues page] of [this repo] or you c
 
 
 [issues page]: <https://github.com/nikitavondel/steam-ts/issues>
-[steam-ts]: <https://www.npmjs.com/package/steam-ts>
 [Node.js]: <https://nodejs.org>
 [npm]: <https://www.npmjs.com/>
 [TeamSpeak]: <https://teamspeak.com/>
