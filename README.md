@@ -149,16 +149,13 @@ If you used to have two factor authentication enabled with this module and recen
 
 ### Changelog
 - **UPDATE 1.3.1**:
-- **UPDATE 1.3.0a**:
-- Fixed admin panel bug where it would say that you have entered an incorrect SteamID.
-
-- **UPDATE 1.3.0**:
 - Added an admin panel
 - Adjusted philosophy behind this project, it is now a Node.Js application and not a module anymore.
 - verified.json now gets checked regurarly and does not get stored in the RAM of the system anymore.
 - Adjusted code for possible future database functionality.
 - Now logging IP addresses and nicknames.
 - verified.json now has a different structure. The application will automatically update it for you without making you lose data.
+- Fixed admin panel bug where it would say that you have entered an incorrect SteamID.
 
 ### Development
 
