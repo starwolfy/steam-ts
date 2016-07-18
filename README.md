@@ -39,12 +39,12 @@ The keys represent the Steam Identity Version 3 which can easily be converted to
 ### Installation
 
 First make sure that you actually have [Node.js] installed on your machine.
-Then download transfer the files from this GitHub repository to your machine, browse to the folder where the project is located and execute the following command:
+Then transfer the files from this GitHub repository to your machine, browse to the folder where the project is located and execute the following command:
 ```sh
 $ npm install
 ```
 
-After you have installed all the required dependencies via npm install it is **required to edit config.json** file accordingly. More documentation on that down below.
+After you have installed all the required dependencies via *npm install* it is **required to edit the config.json** file accordingly. More documentation on that down below.
 
 After having successfully edited the config the following command will launch the bot:
 ```sh
