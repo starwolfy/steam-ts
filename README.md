@@ -2,7 +2,7 @@
 
 
 ### version
-1.3.0a
+1.3.1
 
 steam-ts is a [Node.js] application which allows for fast and easy verification between a [TeamSpeak] account and a [Steam] account of the same user.
 
@@ -25,7 +25,7 @@ This json file contains an array called users wherein each element represents an
 An example of the **verified.json** file:
 ```json
 {
-            "nicknames": ["Bob, "Bob <3""],
+            "nicknames": ["Bob, "Bob <3"],
             "addresses": ["192.168.2.15", "192.168.2.35"],
             "steamid": "[U:1:120910450]",
             "teamspeakid": "/huKa7R0PJFlehpmcCXnyW/ZuZw="
