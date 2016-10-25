@@ -126,10 +126,6 @@ module.exports = function(io) {
 
                     }
 
-                    if (found) {
-                        break;
-                    }
-
                 }
 
             });
