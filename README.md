@@ -2,7 +2,7 @@
 
 
 ### version
-1.3.2
+1.3.3
 
 steam-ts is a [Node.js] application which allows for fast and easy verification between a [TeamSpeak] account and a [Steam] account of the same user.
 
