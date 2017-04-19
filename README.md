@@ -162,9 +162,7 @@ If you used to have two factor authentication enabled with this module and recen
 
 ### Development
 
-Please do report **all** the bugs you encounter.
-
-Suggestions are welcome!
+Please do report the bugs you encounter.
 
 If you'd like to improve this project feel free to start a pull request, it will be reviewed as fast as possible.
 
