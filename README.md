@@ -34,7 +34,7 @@ An example of the **verified.json** file:
 
 ### Installation
 
-First make sure that you actually have [Node.js] installed on your machine.
+First make sure that you actually have [Node.js] installed on your Linux machine (the web interface doesn't work on Windows).
 Then transfer the files from this GitHub repository to your machine, browse to the folder where the project is located and execute the following command:
 ```sh
 $ npm install
