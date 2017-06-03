@@ -34,7 +34,7 @@ An example of the **verified.json** file:
 
 ### Installation
 
-First make sure that you actually have [Node.js] installed on your Linux machine (the web interface doesn't work on Windows).
+First make sure that you actually have [Node.js] installed on your Linux machine (the web interface [doesn't work] on Windows).
 Then transfer the files from this GitHub repository to your machine, browse to the folder where the project is located and execute the following command:
 ```sh
 $ npm install
@@ -174,6 +174,7 @@ You can get support by either going to the [issues page] of [this repo] or you c
 
 [issues page]: <https://github.com/nikitavondel/steam-ts/issues>
 [Node.js]: <https://nodejs.org>
+[doesn't work]: <https://github.com/nikitavondel/steam-ts/issues/20>
 [npm]: <https://www.npmjs.com/>
 [TeamSpeak]: <https://teamspeak.com/>
 [Steam]: <https://steamcommunity.com/>
