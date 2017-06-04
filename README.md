@@ -169,7 +169,7 @@ If you'd like to improve this project feel free to start a pull request, it will
 
 ### Support
 
-You can get support by either going to the [issues page] of [this repo] or you can get personal support via Steam by adding [Classy^^].
+You can get support by either going to the [issues page] of [this repo] or you can get personal support via Steam by adding [Classy^^]. Aditionally there is [this video tutorial] for Windows users.
 
 
 [issues page]: <https://github.com/nikitavondel/steam-ts/issues>
@@ -183,3 +183,4 @@ You can get support by either going to the [issues page] of [this repo] or you c
 [gameDig's page]: <https://github.com/sonicsnes/node-gamedig#supported>
 [this repo]: <https://github.com/nikitavondel/steam-ts>
 [Classy^^]: <http://steamcommunity.com/profiles/76561198034364892>
+[this video tutorial]: <https://www.youtube.com/watch?v=ZSZBIK2EWnM>
