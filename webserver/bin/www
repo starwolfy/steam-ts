@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-module.exports = function (webserverPort, sessionSecret) {
+module.exports = function (webserverPort, sessionSecret, useHttps) {
 
   /**
    * Module dependencies.
@@ -9,6 +9,7 @@ module.exports = function (webserverPort, sessionSecret) {
   var app = require('../app');
   var debug = require('debug')('webserver:server');
   var http = require('http');
+  var https = require('https');
   var path = require('path');
   var fs = require('fs');
 
@@ -24,7 +25,15 @@ module.exports = function (webserverPort, sessionSecret) {
    * Create HTTP server.
    */
 
-  var server = http.createServer(app);
+  if (useHttps) {
+    var options = {
+      key: fs.readFileSync(path.join(__dirname, '..', 'server.key'),
+      cert: fs.readFileSync(path.join(__dirname, '..', 'server.crt'),
+    };
+    var server = https.createServer(options, app);
+  } else {
+    var server = http.createServer(app);
+  }
 
   //  Edited for socket.io
   var sharedsession = require("express-socket.io-session");

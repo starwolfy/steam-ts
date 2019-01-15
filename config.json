@@ -11,7 +11,8 @@
     "wantedrankid": 2,
     "editdescription": false,
     "clanabbreviation": "",
-    "queryinterval": 30000
+    "queryinterval": 30000,
+    "useHttps": true
   },
   "twofactor": {
     "enabled": false

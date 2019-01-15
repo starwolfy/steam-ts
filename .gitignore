@@ -1,4 +1,4 @@
 .idea/
 node_modules/
 data/
-README.md
+package-lock.json
