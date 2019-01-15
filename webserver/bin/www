@@ -29,8 +29,8 @@ module.exports = function (webserverPort, sessionSecret, useHttps) {
 
   if (useHttps) {
     var options = {
-      key: configjson.main.ssl_key || fs.readFileSync(path.join(__dirname, '../server.key')),
-      cert: configjson.main.ssl_cert || fs.readFileSync(path.join(__dirname, '../server.crt')),
+      key: fs.readFileSync(configjson.main.ssl_key || path.join(__dirname, '../server.key')),
+      cert: fs.readFileSync(configjson.main.ssl_cert || path.join(__dirname, '../server.crt')),
     };
     var server = https.createServer(options, app);
   } else {
