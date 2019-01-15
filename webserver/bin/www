@@ -13,6 +13,8 @@ module.exports = function (webserverPort, sessionSecret, useHttps) {
   var path = require('path');
   var fs = require('fs');
 
+  var configjson = JSON.parse(fs.readFileSync(path.join(__dirname, '../', '../', "config.json")));
+
   /**
    * Get port from environment and store in Express.
    */
@@ -27,8 +29,8 @@ module.exports = function (webserverPort, sessionSecret, useHttps) {
 
   if (useHttps) {
     var options = {
-      key: fs.readFileSync(path.join(__dirname, '..', 'server.key'),
-      cert: fs.readFileSync(path.join(__dirname, '..', 'server.crt'),
+      key: configjson.main.ssl_key || fs.readFileSync(path.join(__dirname, '../server.key')),
+      cert: configjson.main.ssl_cert || fs.readFileSync(path.join(__dirname, '../server.crt')),
     };
     var server = https.createServer(options, app);
   } else {
@@ -40,7 +42,6 @@ module.exports = function (webserverPort, sessionSecret, useHttps) {
   var session = require('express-session');
 
   var io = require('socket.io')(server, {maxHttpBufferSize: 2097152});
-  var configjson = JSON.parse(fs.readFileSync(path.join(__dirname, '../', '../', "config.json")));
   var sessionSecret = configjson.doNotEdit.sessionSecret;
 
   var FileStore = require('session-file-store')(session);
