@@ -63,7 +63,8 @@ information about all the values inside the config.json:
     "wantedrankid": 2, // The id of the rank the bot will promote them to once they are verified, cannot be value 1. (verified rank)
     "editdescription": false, // Should the bot adjust users descriptions as well so that it will display their steamid64 there?
     "clanabbreviation": "", // Should not be bigger than 4 letters. The abbreviation of your clan name if you have one.
-    "queryinterval": 30000 //  At which interval should the bot query the server for client information. In ms.
+    "queryinterval": 30000, //  At which interval should the bot query the server for client information. In ms.
+    "useHttps": true // Weather to use HTTPS oder HTTP
   },
   "twoFactor": {
     "enabled": false // Enable or disable mobile authentication; **if you want to let this module support the two factor authentication you need to go through a small process described below!**
@@ -87,6 +88,7 @@ information about all the values inside the config.json:
   - The value wantedrankid cannot be set to 1! Doing so will result in the bot trying to access someone with the very default rank on your TeamSpeak server which it has no access to. So create a new group and make that the default rank, as long as it does not have 1 as id.
   - Do not edit the children of property "doNotEdit".
   - Do not share value "sessionSecret".
+  * If you want to make a SSL cert yourself go [here](https://www.akadia.com/services/ssh_test_certificate.html)
 
 An example of the config.json file:
 
@@ -104,7 +106,8 @@ An example of the config.json file:
     "wantedrankid": 34,
     "editdescription": true,
     "clanabbreviation": "CLWO",
-    "queryinterval": 30000
+    "queryinterval": 30000,
+    "userHttps": true
   },
   "twoFactor": {
     "enabled": true
@@ -114,7 +117,7 @@ An example of the config.json file:
     "port": "8080",
     "webminUsername": "nikitavondel",
     "webminPassword": "rainbows",
-    "timeOut": 300000 
+    "timeOut": 300000
   },
   "doNotEdit": {
     "sessionSecret": ""
