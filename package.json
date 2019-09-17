@@ -28,7 +28,7 @@
     "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
     "crypto": "~0.0.3",
-    "debug": "~2.2.0",
+    "debug": ">=2.6.9",
     "ejs": ">=2.5.5",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
